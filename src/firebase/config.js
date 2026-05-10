@@ -1,35 +1,22 @@
-// src/firebase/config.js
-// ─────────────────────────────────────────────────────────────────────────────
-// Firebase app initialisation.
-// All sensitive values are read from environment variables — never hardcode
-// your keys here. Copy .env.example → .env and fill in your project values.
-// ─────────────────────────────────────────────────────────────────────────────
-
-import { initializeApp } from 'firebase/app';
-import { getAuth }        from 'firebase/auth';
-import { getFirestore }   from 'firebase/firestore';
-import { getStorage }     from 'firebase/storage';
-import { getFunctions }   from 'firebase/functions';
-import { getAnalytics }   from 'firebase/analytics';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey:            import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain:        import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId:         import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket:     import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId:             import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId:     import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
-// ── Initialise app ────────────────────────────────────────────────────────────
 const app = initializeApp(firebaseConfig);
+let analytics;
 
-// ── Export individual services ────────────────────────────────────────────────
-export const auth      = getAuth(app);
-export const db        = getFirestore(app);
-export const storage   = getStorage(app);
-export const functions = getFunctions(app);
-export const analytics = getAnalytics(app);
+// Analytics is only available in the browser context
+if (typeof window !== "undefined") {
+  analytics = getAnalytics(app);
+}
 
-export default app;
+export { app, analytics };

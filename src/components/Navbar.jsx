@@ -1,51 +1,30 @@
-// src/components/Navbar.jsx
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
-import { logout } from '../firebase/auth';
-
-export default function Navbar() {
-  const { user } = useAuth();
-  const navigate  = useNavigate();
-
-  const handleLogout = async () => {
-    await logout();
-    navigate('/login');
-  };
-
+const Navbar = () => {
   return (
-    <header className="sticky top-0 z-50 glass border-b border-white/10">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Brand */}
-        <Link to="/" className="font-display text-xl font-bold gradient-text">
+    <nav className="w-full border-b-[1px] border-black bg-white flex items-center justify-between px-6 py-4">
+      <div className="flex-1">
+        <Link to="/" className="text-xl font-bold uppercase tracking-tighter text-black">
           Fixora
         </Link>
-
-        {/* Nav links */}
-        <div className="hidden md:flex items-center gap-6 text-sm text-white/70">
-          <Link to="/"        className="hover:text-white transition-colors">Home</Link>
-          <Link to="/dashboard" className="hover:text-white transition-colors">Dashboard</Link>
-        </div>
-
-        {/* Auth actions */}
-        <div className="flex items-center gap-3">
-          {user ? (
-            <>
-              <span className="hidden sm:block text-sm text-white/60 truncate max-w-[180px]">
-                {user.displayName || user.email}
-              </span>
-              <button onClick={handleLogout} className="btn-secondary text-sm py-1.5 px-4">
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link to="/login"    className="btn-secondary text-sm py-1.5 px-4">Login</Link>
-              <Link to="/register" className="btn-primary  text-sm py-1.5 px-4">Sign Up</Link>
-            </>
-          )}
-        </div>
-      </nav>
-    </header>
+      </div>
+      <div className="flex items-center gap-4">
+        <Link to="/providers" className="text-sm font-semibold tracking-widest uppercase border-[1px] border-black bg-white px-4 py-2 hover:bg-black hover:text-white transition-colors">
+          Providers
+        </Link>
+        <Link to="/book" className="text-sm font-semibold tracking-widest uppercase border-[1px] border-black bg-white px-4 py-2 hover:bg-black hover:text-white transition-colors">
+          Book
+        </Link>
+        <Link to="/admin" className="text-sm font-semibold tracking-widest uppercase border-[1px] border-black bg-black text-white px-4 py-2 hover:bg-accent transition-colors">
+          Admin
+        </Link>
+        <Link to="/login" className="text-sm font-semibold tracking-widest uppercase border-[1px] border-black bg-white px-4 py-2 hover:bg-black hover:text-white transition-colors">
+          Login / Join as Pro
+        </Link>
+      </div>
+    </nav>
   );
-}
+};
+
+export default Navbar;
