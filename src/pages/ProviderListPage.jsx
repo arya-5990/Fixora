@@ -1,16 +1,10 @@
 import React from 'react';
 import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
+import { providers } from '../data/mockDb';
 
 const ProviderListPage = () => {
   const navigate = useNavigate();
-  
-  const providers = [
-    { id: 'p1', name: 'James Holden', role: 'Master Electrician', rate: '$85/hr', headshot: '/images/headshot_james_1778436728819.png' },
-    { id: 'p2', name: 'Naomi Nagata', role: 'HVAC Specialist', rate: '$95/hr', headshot: '/images/headshot_naomi_1778436744010.png' },
-    { id: 'p3', name: 'Amos Burton', role: 'Heavy Carpentry', rate: '$75/hr', headshot: '/images/headshot_amos_1778436760788.png' },
-    { id: 'p4', name: 'Alex Kamal', role: 'General Plumbing', rate: '$80/hr', headshot: '/images/headshot_alex_1778436776939.png' },
-  ];
 
   return (
     <div className="w-full min-h-screen bg-grey">

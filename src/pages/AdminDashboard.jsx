@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { initialBookings } from '../data/mockDb';
 
 const AdminDashboard = () => {
-  const [bookings, setBookings] = useState([
-    { id: 'BK-1001', customer: 'Alice Vance', service: 'Plumbing', status: 'Pending', time: '10:00 AM' },
-    { id: 'BK-1002', customer: 'Bob Miller', service: 'Electrical', status: 'Accepted', time: '11:30 AM' },
-    { id: 'BK-1003', customer: 'Charlie Davis', service: 'HVAC', status: 'In-Progress', time: '09:00 AM' },
-    { id: 'BK-1004', customer: 'Diana Prince', service: 'Carpentry', status: 'Completed', time: 'Yesterday' },
-  ]);
+  const [bookings, setBookings] = useState(initialBookings);
 
   // Mocking Firestore onSnapshot behavior for real-time updates
   useEffect(() => {

@@ -1,18 +1,9 @@
 import React from 'react';
 import ServiceCard from '../components/ServiceCard';
 import Button from '../components/Button';
+import { services } from '../data/mockDb';
 
 const HomePage = () => {
-  const services = [
-    { id: 1, title: 'Plumbing & Pipes', imageUrl: '/images/service_plumbing_1778436660404.png' },
-    { id: 2, title: 'Electrical Repair', imageUrl: '/images/service_electrical_1778436674650.png' },
-    { id: 3, title: 'HVAC Maintenance', imageUrl: '/images/service_hvac_1778436689770.png' },
-    { id: 4, title: 'Carpentry & Woodwork', imageUrl: '/images/service_carpentry_1778436707071.png' },
-    { id: 5, title: 'Deep Cleaning', imageUrl: '/images/service_plumbing_1778436660404.png' },
-    { id: 6, title: 'Painting & Drywall', imageUrl: '/images/service_carpentry_1778436707071.png' },
-    { id: 7, title: 'Appliance Repair', imageUrl: '/images/service_electrical_1778436674650.png' },
-    { id: 8, title: 'Pest Control', imageUrl: '/images/service_hvac_1778436689770.png' },
-  ];
 
   return (
     <div className="w-full">
