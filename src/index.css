@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --scrollbar-track: #1e293b;
+    --scrollbar-thumb: #4f46e5;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-surface-950 text-white font-sans antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    @apply rounded-full;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-primary-600 hover:bg-primary-700
+           text-white font-semibold rounded-xl transition-all duration-200 shadow-glow
+           hover:shadow-glow-lg active:scale-95 focus:outline-none focus:ring-2
+           focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-surface-950;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-surface-800 hover:bg-surface-700
+           text-white font-semibold rounded-xl border border-surface-700 transition-all duration-200
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary-500
+           focus:ring-offset-2 focus:ring-offset-surface-950;
+  }
+
+  .card {
+    @apply bg-surface-900 border border-surface-800 rounded-2xl p-6 transition-all duration-200
+           hover:border-primary-800 hover:shadow-glow;
+  }
+
+  .input {
+    @apply w-full bg-surface-800 border border-surface-700 rounded-xl px-4 py-2.5 text-white
+           placeholder:text-surface-200/40 focus:outline-none focus:ring-2 focus:ring-primary-500
+           focus:border-transparent transition-all duration-200;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .section-title {
+    @apply text-3xl font-display font-bold tracking-tight text-white;
+  }
+
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 to-accent-500 bg-clip-text text-transparent;
+  }
+
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+}
