@@ -6,10 +6,10 @@ const ProviderListPage = () => {
   const navigate = useNavigate();
   
   const providers = [
-    { id: 'p1', name: 'James Holden', role: 'Master Electrician', rate: '$85/hr' },
-    { id: 'p2', name: 'Naomi Nagata', role: 'HVAC Specialist', rate: '$95/hr' },
-    { id: 'p3', name: 'Amos Burton', role: 'Heavy Carpentry', rate: '$75/hr' },
-    { id: 'p4', name: 'Alex Kamal', role: 'General Plumbing', rate: '$80/hr' },
+    { id: 'p1', name: 'James Holden', role: 'Master Electrician', rate: '$85/hr', headshot: '/images/headshot_james_1778436728819.png' },
+    { id: 'p2', name: 'Naomi Nagata', role: 'HVAC Specialist', rate: '$95/hr', headshot: '/images/headshot_naomi_1778436744010.png' },
+    { id: 'p3', name: 'Amos Burton', role: 'Heavy Carpentry', rate: '$75/hr', headshot: '/images/headshot_amos_1778436760788.png' },
+    { id: 'p4', name: 'Alex Kamal', role: 'General Plumbing', rate: '$80/hr', headshot: '/images/headshot_alex_1778436776939.png' },
   ];
 
   return (
@@ -26,10 +26,8 @@ const ProviderListPage = () => {
       <div className="flex flex-col">
         {providers.map((provider) => (
           <div key={provider.id} className="grid grid-cols-1 md:grid-cols-12 border-b-[1px] border-black bg-white group hover:bg-grey transition-colors">
-            <div className="md:col-span-2 border-b-[1px] md:border-b-0 md:border-r-[1px] border-black aspect-square md:aspect-auto flex items-center justify-center bg-black/5">
-              <span className="text-xs font-semibold tracking-widest text-black/40">
-                [HEADSHOT]
-              </span>
+            <div className="md:col-span-2 border-b-[1px] md:border-b-0 md:border-r-[1px] border-black aspect-square md:aspect-auto flex items-center justify-center bg-black/5 overflow-hidden">
+              <img src={provider.headshot} alt={provider.name} className="w-full h-full object-cover grayscale" />
             </div>
             
             <div className="md:col-span-6 p-6 md:p-8 flex flex-col justify-center border-b-[1px] md:border-b-0 md:border-r-[1px] border-black">
